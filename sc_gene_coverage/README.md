@@ -3,7 +3,7 @@ This Python script is an adaptation of [single-cell gene expression depth script
 
 The code has been reimplemented in Python3 with changes to inputs (see below) and reports a different metric than the original script; instead of reporting the number of unique reads (CB:UMI) per position, the proportion of cells with >= 1 read at each position is reported (#CBs/position). 
 
-Please note that this script is a work in progress (some warnings may get thrown when running the script) so please report any issues/suggestions. There is a .ipynb version of the script present if you want to run it interactively in Jupyter Lab for debugigng purposes.
+Please note that this script is a work in progress (some warnings may get thrown when running the script) so please report any issues/suggestions.
 
 ## Inputs
 Please specify the location of the following required inputs in the `scripts/script_parameters.tsv` file:
