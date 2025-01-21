@@ -6,7 +6,7 @@ The code has been reimplemented in Python3 with changes to inputs (see below) an
 Please note that this script is a work in progress (some warnings may get thrown when running the script) so please report any issues/suggestions. There is a .ipynb version of the script present if you want to run it interactively in Jupyter Lab for debugigng purposes.
 
 ## Inputs
-Please specify the location of the following required inputs in the `script_parameters.tsv` file:
+Please specify the location of the following required inputs in the `scripts/script_parameters.tsv` file:
 
 | Input      | Notes                                                                                                                                                                                                                                                    |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17,7 +17,7 @@ Please specify the location of the following required inputs in the `script_para
 | sample     | name of sample (will be included in output file names)                                                                                                                                                                                                   |
 
 ## Outputs
-The following files will be generated in the directory after running the script:
+The following files will be generated in the `output` directory after running the script:
 
 | Output                           | Notes                                                                                      |
 | -------------------------------- | -------------------------------------------------------------------------------------------|
@@ -26,7 +26,7 @@ The following files will be generated in the directory after running the script:
 | ensembl_genes.csv                | results from ENSEMBL REST API query - needed to ascertain exonic regions of input genes    |
 
 ### coverage_results.csv
-The output `coverage_results.csv` takes the following format:
+The output `output/coverage_results.csv` takes the following format:
 
 | genomic_position                                                                       | proportial_coverage                                    | percent_gene_expression                                                                  | method                                         | sample         | gene         |
 | -------------------------------------------------------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------- | ------------ |
@@ -36,16 +36,16 @@ The output `coverage_results.csv` takes the following format:
 Sample files are included in this GitHub repo to generate 2 coverage plots (GAPDH and NPM1) for an AML 10x scRNA-seq sample. Please note that the original files were subset to only include data for GAPDH and NPM1 so no other genes can be used as input. To run the tutorial, please follow the commands below:
 
 ### Step 1: Build and activate conda environment
-`conda env create -f sc_gene_coverage.yml`
+`conda env create -f scripts/sc_gene_coverage.yml`
 
 `conda activate sc_gene_coverage`
 
 ### Step 2: Run gene_coverage.py script
-`python3 gene_coverage.py`
+`python3 scripts/gene_coverage.py`
 
 ### Example Output
-The tutorial above should result in the generation of the plot below. The red dashed line in the NPM1 plot indicates the position of the mutation speicified in the `sample_genes.tsv` file (sample_name_coverage_plots.jpg)
-![Coverage plots from sample data](https://github.com/modalaigh/sc_gene_coverage/blob/main/tutorial_results/sample_name_coverage_plots.jpg)
+The tutorial above should result in the generation of the plot below in the `output` directory. The red dashed line in the NPM1 plot indicates the position of the mutation speicified in the `input/sample_genes.tsv` file (sample_name_coverage_plots.jpg)
+![Coverage plots from sample data](https://github.com/modalaigh/Bern_PacBio_Data_Day_25/blob/main/sc_gene_coverage/tutorial_results/sample_name_coverage_plots.jpg)
 
 ## 10x vs Kinnex data tutorial 
 If you are interested in comparing coverage for dual sequenced samples, please see the [dual_plot](https://github.com/modalaigh/sc_gene_coverage/blob/dual_plot/README.md) branch for a similar tutorial
