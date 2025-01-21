@@ -40,7 +40,7 @@ Sample files are included in this GitHub repo to generate 2 coverage plots (GAPD
 `conda activate sc_gene_coverage`
 
 ### Step 2: Run dual_gene_coverage.py script
-`python3 script/gene_coverage.py`
+`python3 scripts/dual_gene_coverage.py`
 
 ### Example output
 The tutorial above should result in the generation of the plot below. The red dashed line in the NPM1 plot indicates the position of the mutation speicified in the `script/sample_genes.tsv` file. The other colours correspond with the sequencing method (see legend)
