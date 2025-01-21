@@ -21,11 +21,11 @@ The following files will be generated in the directory after running the script:
 | Output                           | Notes                                                                                      |
 | -------------------------------- | -------------------------------------------------------------------------------------------|
 | sample_name_coverage_plots.jpg   | coverage plots generated with matplotlib - see tutorial below for example                  |
-| dual_coverage_results.csv        | dataframe containing gene coverage data - see table below for explanation                  |
+| coverage_results.csv        | dataframe containing gene coverage data - see table below for explanation                  |
 | ensembl_genes.csv                | results from ENSEMBL REST API query - needed to ascertain exonic regions of input genes    |
 
 ### coverage_results.csv
-The output `dual_coverage_results.csv` takes the following format:
+The output `coverage_results.csv` takes the following format:
 
 | genomic_position                                                                       | proportial_coverage                                    | percent_gene_expression                                                                                             | method                            | sample         | gene         |
 | -------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | --------------------------------- | -------------- | ------------ |
@@ -45,4 +45,4 @@ Sample files are included in this GitHub repo to generate 2 coverage plots (GAPD
 ### Example Output
 The tutorial above should result in the generation of the plot below. The red dashed line in the NPM1 plot indicates the position of the mutation speicified in the `sample_genes.tsv` file (sample_name_coverage_plots.jpg). The other colours correspond with the sequencing method (see legend)
 
-![Coverage plots from sample data](https://github.com/modalaigh/sc_gene_coverage/blob/dual_plot/tutorial_results/sample_name_coverage_plots.jpg)
+![Coverage plots from sample data](https://github.com/modalaigh/Bern_PacBio_Data_Day_25/blob/main/ds_sc_gene_coverage/tutorial_results/sample_name_coverage_plots.jpg)
