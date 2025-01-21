@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 # Load in required libraries
 import requests, sys
@@ -16,9 +14,6 @@ import pysam
 import matplotlib.pyplot as plt
 from collections import defaultdict
 from Bio.Seq import Seq
-
-
-# In[2]:
 
 
 # Query Ensembl REST API for information about genes and their canonical transcript
@@ -53,9 +48,6 @@ def ensembl_rest_genes(batch):
     return(gene_table)
 
 
-# In[3]:
-
-
 # Query Ensembl REST API for information about transcripts and their exons
 def ensembl_rest_transcripts(transcripts):
     server = "https://rest.ensembl.org"
@@ -69,9 +61,6 @@ def ensembl_rest_transcripts(transcripts):
      
     ensembl_transcripts = r.json()
     return(ensembl_transcripts)
-
-
-# In[4]:
 
 
 # Calculate coverage (number of cell barcodes aligning to each position) along a specific gene based on the start and end positions reported by ENSEMBL
@@ -108,9 +97,6 @@ def calculate_coverage(sample, seq_type, barcodes, gene, c_some, tx_start, tx_en
     return df
 
 
-# In[5]:
-
-
 # Convert barcodes and calculate overlap between technologies
 def convert_barcodes(barcodes_10x, barcodes_kx):
     # Strip appendix from barcodes
@@ -125,20 +111,17 @@ def convert_barcodes(barcodes_10x, barcodes_kx):
                          'Kx' : list(common_barcodes_kx)})
 
 
-# In[6]:
-
-
 # Define gene list to query
-script_parameters = pd.read_csv("script_parameters.tsv", sep="\t")
+script_parameters = pd.read_csv("scripts/script_parameters.tsv", sep="\t")
 input_genes = pd.read_csv(script_parameters.loc[2, 'value'], sep='\t')
 gene_list = pd.read_csv(script_parameters.loc[2,'value'], sep='\t')['gene'].values.tolist()
 
 # Check if gene already queried in 'ensembl_genes.csv' - if file does not exist, it will be created with predefined columns
-if not os.path.exists('ensembl_genes.csv'):
-    with open('ensembl_genes.csv', 'w') as file:
+if not os.path.exists('output/ensembl_genes.csv'):
+    with open('output/ensembl_genes.csv', 'w') as file:
         file.write('display_name,id,seq_region_name,strand,start,end,canonical_transcript,exon_positions' + '\n') # Later appending step was inserting on header row when new line was not specified at the end
 
-df = pd.read_csv('ensembl_genes.csv')
+df = pd.read_csv('output/ensembl_genes.csv')
 genes = df['display_name'].values.tolist() # Extract gene names
 new_genes = [gene for gene in gene_list if gene not in genes] # Extract genes which haven't already been analysed
 
@@ -178,21 +161,18 @@ if len(new_genes) > 0: # Only run below code if there are new genes to query
         ensembl_genes["exon_positions"][index] = exon_ranges
     
     # Save ensembl_genes as 'ensembl_genes.csv'
-    ensembl_genes.to_csv('ensembl_genes.csv', index=False, mode='a', header=False) # Don't overwrite genes which were already processed
-
-
-# In[7]:
+    ensembl_genes.to_csv('output/ensembl_genes.csv', index=False, mode='a', header=False) # Don't overwrite genes which were already processed
 
 
 # Calculate coverage for each gene and save results for faster reloading of gene
-ensembl_genes = pd.read_csv('ensembl_genes.csv') # Load in ENSEMBL information about genes
+ensembl_genes = pd.read_csv('output/ensembl_genes.csv') # Load in ENSEMBL information about genes
 
 # Check to see if any coverage data exists and read it in if it does; If it doesn't, it will create an empty file
-if not os.path.exists('coverage_results.csv'):
-    with open('coverage_results.csv', 'w') as file:
+if not os.path.exists('output/coverage_results.csv'):
+    with open('output/coverage_results.csv', 'w') as file:
         file.write('genomic_position,proportional_coverage,percent_gene_expression,method,sample,gene')
 
-gene_cov = pd.read_csv('coverage_results.csv')
+gene_cov = pd.read_csv('output/coverage_results.csv')
 
 # Read in input genes
 input_genes = pd.read_csv(script_parameters.loc[2, 'value'], sep='\t', dtype=str)
@@ -236,10 +216,7 @@ if len(script_parameters.loc[0,'value'].split(',')) == 2:
         
             gene_cov = pd.concat([gene_cov, cov_df], ignore_index = True)
 
-gene_cov.to_csv('dual_coverage_results.csv', index=False)
-
-
-# In[8]:
+gene_cov.to_csv('output/coverage_results.csv', index=False)
 
 
 # Create coverage plots and save all in one figure
@@ -280,5 +257,4 @@ for gene in genes_covered:
 
 plt.tight_layout()
 plt.legend()
-plt.savefig(f"{sub_cov['sample'].unique()[0]}_coverage_plots.jpg")
-
+plt.savefig(f"output/{sub_cov['sample'].unique()[0]}_coverage_plots.jpg")

@@ -1,6 +1,6 @@
 parameter	value
-bam_file	sample_10x_bam.bam,sample_Kx_bam.bam
-barcodes	sample_10x_barcodes.tsv,sample_Kx_barcodes.tsv
-genes	sample_genes.tsv
+bam_file	input/sample_10x_bam.bam,input/sample_Kx_bam.bam
+barcodes	input/sample_10x_barcodes.tsv,input/sample_Kx_barcodes.tsv
+genes	input/sample_genes.tsv
 method	10x,Kx
 sample	sample_name
