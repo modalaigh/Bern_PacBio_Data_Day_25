@@ -1,0 +1,6 @@
+parameter	value
+bam_file	sample_10x_bam.bam
+barcodes	sample_10x_barcodes.tsv
+genes	sample_genes.tsv
+method	10x
+sample	sample_name
