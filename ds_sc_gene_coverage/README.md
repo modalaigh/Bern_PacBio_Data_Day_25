@@ -1,5 +1,5 @@
 ## Introduction
-This is a very similar tutorial to the main tutorial but which focuses on comparing coverage of genes in cells which were sequenced with 2 technologies (e.g. 10x vs Kinnex). The genes/sample here are the same as the main tutorial (NPM1 and GAPDH in an AML relapse sample)
+This is a very similar tutorial to the main `sc_gene_coverage` tutorial but which focuses on comparing coverage of genes in cells which were sequenced with 2 technologies (e.g. 10x vs Kinnex). The genes/sample here are the same as the main tutorial (NPM1 and GAPDH in an AML relapse sample)
 
 ## Inputs
 Please specify the location of the following required inputs in the `scripts/script_parameters.tsv` file. Note: some rows should contain csv values for your two data types - see notes below and example `scripts/script_parameters.tsv` file.
