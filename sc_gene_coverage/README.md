@@ -49,4 +49,4 @@ The tutorial above should result in the generation of the plot below in the `out
 ![Coverage plots from sample data](https://github.com/modalaigh/Bern_PacBio_Data_Day_25/blob/main/sc_gene_coverage/tutorial_results/sample_name_coverage_plots.jpg)
 
 ## 10x vs Kinnex data tutorial 
-If you are interested in comparing coverage for dual sequenced samples, please see the [dual_plot](https://github.com/modalaigh/Bern_PacBio_Data_Day_25/tree/main/ds_sc_gene_coverage) branch for a similar tutorial
+If you are interested in comparing coverage for dual sequenced samples, please see the [ds_sc_gene_coverage](https://github.com/modalaigh/Bern_PacBio_Data_Day_25/tree/main/ds_sc_gene_coverage) directory for a similar tutorial
