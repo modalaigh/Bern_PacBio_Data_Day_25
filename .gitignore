@@ -1,1 +1,3 @@
 *.ipynb_checkpoints
+sc_gene_coverage/output/*
+ds_sc_gene_coverage/output/*
