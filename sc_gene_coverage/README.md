@@ -44,7 +44,8 @@ Sample files are included in this GitHub repo to generate 2 coverage plots (GAPD
 `python3 scripts/gene_coverage.py`
 
 ### Example Output
-The tutorial above should result in the generation of the plot below in the `output` directory. The red dashed line in the NPM1 plot indicates the position of the mutation speicified in the `input/sample_genes.tsv` file (sample_name_coverage_plots.jpg)
+The tutorial above should result in the generation of the plot below in the `output` directory. The red dashed line in the NPM1 plot indicates the position of the mutation speicified in the `input/sample_genes.tsv` file 
+
 ![Coverage plots from sample data](https://github.com/modalaigh/Bern_PacBio_Data_Day_25/blob/main/sc_gene_coverage/tutorial_results/sample_name_coverage_plots.jpg)
 
 ## 10x vs Kinnex data tutorial 
